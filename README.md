@@ -6,7 +6,7 @@ It _should_ work on both Windows, Linux and macOS although only Windows was test
 
 ## Build
 
-* Install [.NET 5 SDK](https://dotnet.microsoft.com/download/dotnet/5.0) on your system
+* Install [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) on your system
 * Run `dotnet build`
 
 ## Usage
@@ -36,3 +36,5 @@ var gpt = DiskPartitionInfo.ReadGpt()
 ### Filesystem headers
 
 Not implemented yet
+
+### Enhanced for GPT CRC32 fix(Dangerous!!!),added for UotanToolboxNT project
