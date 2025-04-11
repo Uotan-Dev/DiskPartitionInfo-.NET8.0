@@ -1,12 +1,8 @@
+using DiskPartitionInfo.Extensions;
+using DiskPartitionInfo.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using DiskPartitionInfo.Extensions;
-using DiskPartitionInfo.Gpt;
-using DiskPartitionInfo.Models;
-using DiskPartitionInfo.Util;
 using GuidPartitionTable = DiskPartitionInfo.Gpt.GuidPartitionTable;
 
 namespace DiskPartitionInfo.FluentApi
@@ -113,12 +109,12 @@ namespace DiskPartitionInfo.FluentApi
                     // 主GPT位于LBA1（即第二个扇区）
                     headerPosition = _sectorSize;
                     writableGpt.PrimaryHeaderLocation = 1;
-                    
+
                     // 计算备份GPT位置
                     stream.Seek(0, SeekOrigin.End);
                     long endPosition = stream.Position;
                     writableGpt.SecondaryHeaderLocation = (ulong)((endPosition / _sectorSize) - 1);
-                    
+
                     // 主GPT的分区表通常在LBA2
                     partitionsPosition = 2 * _sectorSize;
                     writableGpt.PartitionsArrayLba = 2;
@@ -129,11 +125,11 @@ namespace DiskPartitionInfo.FluentApi
                     stream.Seek(0, SeekOrigin.End);
                     long endPosition = stream.Position;
                     headerPosition = endPosition - _sectorSize;
-                    
+
                     // 设置备份GPT的位置
                     writableGpt.SecondaryHeaderLocation = (ulong)(headerPosition / _sectorSize);
                     writableGpt.PrimaryHeaderLocation = 1;
-                    
+
                     // 备份GPT的分区表通常在末尾前
                     // 标准是33个LBA位置（即32个分区表扇区 + 1个GPT头扇区）
                     partitionsPosition = headerPosition - (32 * _sectorSize);
@@ -142,7 +138,7 @@ namespace DiskPartitionInfo.FluentApi
 
                 // 计算分区表的CRC32校验和
                 uint partitionsArrayCrc32 = writableGpt.CalculatePartitionsArrayCrc32(writablePartitions);
-                
+
                 // 生成包含正确CRC32校验和的GPT头字节数组
                 byte[] gptHeaderBytes = writableGpt.ToBytes(partitionsArrayCrc32);
 

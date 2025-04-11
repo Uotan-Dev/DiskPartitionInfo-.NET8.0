@@ -71,7 +71,7 @@ namespace DiskPartitionInfo.Util
                 throw new ArgumentNullException(nameof(bytes));
 
             // 如果排除区域无效或超出范围，则计算整个数组
-            if (excludeOffset < 0 || excludeOffset >= bytes.Length || 
+            if (excludeOffset < 0 || excludeOffset >= bytes.Length ||
                 excludeSize <= 0 || excludeOffset + excludeSize > bytes.Length)
             {
                 return Compute(bytes);

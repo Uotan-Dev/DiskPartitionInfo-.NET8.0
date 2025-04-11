@@ -13,7 +13,7 @@ namespace DiskPartitionInfo.Extensions
 
             try
             {
-                result = (T) Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T))!;
+                result = (T)Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T))!;
             }
             finally
             {
@@ -22,14 +22,14 @@ namespace DiskPartitionInfo.Extensions
 
             return result;
         }
-        
+
         internal static byte[] StructToBytes<T>(this T structure)
             where T : struct
         {
             int size = Marshal.SizeOf(typeof(T));
             byte[] buffer = new byte[size];
             IntPtr ptr = Marshal.AllocHGlobal(size);
-            
+
             try
             {
                 Marshal.StructureToPtr(structure, ptr, false);
@@ -39,7 +39,7 @@ namespace DiskPartitionInfo.Extensions
             {
                 Marshal.FreeHGlobal(ptr);
             }
-            
+
             return buffer;
         }
     }

@@ -1,8 +1,8 @@
+using DiskPartitionInfo.Extensions;
+using DiskPartitionInfo.Gpt;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using DiskPartitionInfo.Extensions;
-using DiskPartitionInfo.Gpt;
 using GptPartitionStruct = DiskPartitionInfo.Models.GptPartitionEntry;
 using GptStruct = DiskPartitionInfo.Models.GuidPartitionTable;
 
@@ -85,7 +85,7 @@ namespace DiskPartitionInfo.FluentApi
             // 如果所有尝试都失败，抛出最后一次异常
             if (lastException != null)
                 throw new InvalidOperationException("无法使用任何扇区大小读取有效的GPT分区表", lastException);
-            
+
             throw new InvalidOperationException("无法读取有效的GPT分区表");
         }
 

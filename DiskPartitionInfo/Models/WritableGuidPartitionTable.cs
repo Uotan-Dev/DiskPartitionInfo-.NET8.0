@@ -1,9 +1,8 @@
+using DiskPartitionInfo.Extensions;
+using DiskPartitionInfo.Util;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using DiskPartitionInfo.Extensions;
-using DiskPartitionInfo.Gpt;
-using DiskPartitionInfo.Util;
 
 namespace DiskPartitionInfo.Models
 {

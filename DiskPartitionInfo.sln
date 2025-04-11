@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiskPartitionInfo", "DiskPartitionInfo\DiskPartitionInfo.csproj", "{BB36108F-D663-45FA-8450-A956269DDF45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPTCRC32Fixer", "GPTCRC32Fixer\GPTCRC32Fixer.csproj", "{BA1849D2-3467-4DEB-B255-6EAFFF219E6C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BB36108F-D663-45FA-8450-A956269DDF45} = {BB36108F-D663-45FA-8450-A956269DDF45}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,9 +18,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BB36108F-D663-45FA-8450-A956269DDF45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +32,20 @@ Global
 		{BB36108F-D663-45FA-8450-A956269DDF45}.Release|x64.Build.0 = Release|Any CPU
 		{BB36108F-D663-45FA-8450-A956269DDF45}.Release|x86.ActiveCfg = Release|Any CPU
 		{BB36108F-D663-45FA-8450-A956269DDF45}.Release|x86.Build.0 = Release|Any CPU
+		{BA1849D2-3467-4DEB-B255-6EAFFF219E6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA1849D2-3467-4DEB-B255-6EAFFF219E6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA1849D2-3467-4DEB-B255-6EAFFF219E6C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BA1849D2-3467-4DEB-B255-6EAFFF219E6C}.Debug|x64.Build.0 = Debug|Any CPU
+		{BA1849D2-3467-4DEB-B255-6EAFFF219E6C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BA1849D2-3467-4DEB-B255-6EAFFF219E6C}.Debug|x86.Build.0 = Debug|Any CPU
+		{BA1849D2-3467-4DEB-B255-6EAFFF219E6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA1849D2-3467-4DEB-B255-6EAFFF219E6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA1849D2-3467-4DEB-B255-6EAFFF219E6C}.Release|x64.ActiveCfg = Release|Any CPU
+		{BA1849D2-3467-4DEB-B255-6EAFFF219E6C}.Release|x64.Build.0 = Release|Any CPU
+		{BA1849D2-3467-4DEB-B255-6EAFFF219E6C}.Release|x86.ActiveCfg = Release|Any CPU
+		{BA1849D2-3467-4DEB-B255-6EAFFF219E6C}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
