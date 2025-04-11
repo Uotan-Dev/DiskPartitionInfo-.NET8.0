@@ -3,15 +3,15 @@ using System.Runtime.InteropServices;
 namespace DiskPartitionInfo.Models
 {
     [StructLayout(LayoutKind.Sequential, Size = 512, Pack = 1)]
-    internal readonly struct ClassicalMasterBootRecord
+    internal struct ClassicalMasterBootRecord
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 446)]
-        public readonly byte[] BootstrapCodeArea;
+        public byte[] BootstrapCodeArea;
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-        public readonly MbrPartitionEntry[] PartitionEntries;
+        public MbrPartitionEntry[] PartitionEntries;
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
-        public readonly byte[] BootSignature;
+        public byte[] BootSignature;
     }
 }

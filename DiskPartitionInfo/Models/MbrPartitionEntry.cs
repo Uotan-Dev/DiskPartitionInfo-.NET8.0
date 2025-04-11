@@ -3,26 +3,26 @@ using System.Runtime.InteropServices;
 namespace DiskPartitionInfo.Models
 {
     [StructLayout(LayoutKind.Sequential, Size = 16, Pack = 1)]
-    internal readonly struct MbrPartitionEntry
+    internal struct MbrPartitionEntry
     {
-        public readonly byte Status;
+        public byte Status;
 
         /// <summary>
         /// CHS address
         /// </summary>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-        public readonly byte[] FirstBootableSector;
+        public byte[] FirstBootableSector;
 
-        public readonly byte PartitionType;
+        public byte PartitionType;
 
         /// <summary>
         /// CHS address
         /// </summary>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-        public readonly byte[] LastBootableSector;
+        public byte[] LastBootableSector;
 
-        public readonly uint FirstAbsoluteSector;
+        public uint FirstAbsoluteSector;
 
-        public readonly uint SectorsCount;
+        public uint SectorsCount;
     }
 }
