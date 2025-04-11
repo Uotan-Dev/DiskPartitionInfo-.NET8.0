@@ -5,23 +5,6 @@ namespace DiskPartitionInfo.FluentApi
 {
     public interface IMbrReader
     {
-#if Windows
-        /// <summary>
-        /// Reads the MBR from the physical drive given its number.
-        /// </summary>
-        /// <param name="driveNumber">Drive number, e.g. 0 or 3.</param>
-        /// <returns>The Master Boot Record information.</returns>
-        MasterBootRecord FromPhysicalDriveNumber(int driveNumber);
-
-        /// <summary>
-        /// Reads the MBR record from the physical drive given a volume letter.
-        /// MBR will be read from the corresponding physical drive if it exists.
-        /// </summary>
-        /// <param name="volumeLetter">Volume letter, e.g. C: or F:.</param>
-        /// <returns>The Master Boot Record information.</returns>
-        MasterBootRecord FromVolumeLetter(string volumeLetter);
-#endif
-
         /// <summary>
         /// Reads the MBR from the given path.
         /// It can be a path to a file or to a physical drive.
