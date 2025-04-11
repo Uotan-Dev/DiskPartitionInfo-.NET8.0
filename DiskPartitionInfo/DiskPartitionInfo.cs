@@ -9,5 +9,8 @@ namespace DiskPartitionInfo
 
         public static IGptReaderLocation ReadGpt()
             => new GptReader();
+            
+        public static IGptWriterLocation WriteGpt()
+            => new GptWriter();
     }
 }
