@@ -14,7 +14,7 @@ namespace DiskPartitionInfo.FluentApi
         private const int AdvancedSectorSize = 4096;
 
         private bool _usePrimary = true;
-        private int _sectorSize = StandardSectorSize; // 默认使用标准扇区大小
+        private int _sectorSize = AdvancedSectorSize; // 默认使用4K扇区大小
 
         /// <inheritdoc/>
         public IGptWriter Primary()
@@ -79,7 +79,7 @@ namespace DiskPartitionInfo.FluentApi
                     // 设置EFI PART签名
                     Signature = "EFI PART".ToCharArray(),
                     // 版本通常为1.0（00 00 01 00）
-                    Revision = new byte[] { 0, 0, 1, 0 },
+                    Revision = [0, 0, 1, 0],
                     HeaderSize = 92, // GPT头部的标准大小为92字节
                     // HeaderCrc32会在后面计算
                     HeaderCrc32 = 0,
@@ -104,6 +104,10 @@ namespace DiskPartitionInfo.FluentApi
                 // 确定写入的位置
                 long headerPosition;
                 long partitionsPosition;
+
+                //设定扇区大小，数据来源于读取的分区表文件
+                _sectorSize = gpt.SectorSize;
+
                 if (_usePrimary)
                 {
                     // 主GPT位于LBA1（即第二个扇区）

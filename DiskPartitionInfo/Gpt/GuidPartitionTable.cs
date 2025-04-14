@@ -9,9 +9,9 @@ namespace DiskPartitionInfo.Gpt
 {
     public class GuidPartitionTable
     {
+        public int SectorSize;
         private readonly GptStruct _gpt;
         private readonly IReadOnlyCollection<PartitionEntry> _partitions;
-
         public bool HasValidSignature()
             => new string(_gpt.Signature).Equals("EFI PART", StringComparison.Ordinal);
 
@@ -33,15 +33,14 @@ namespace DiskPartitionInfo.Gpt
         public IReadOnlyCollection<PartitionEntry> Partitions
             => _partitions;
 
-        internal GuidPartitionTable(
+        internal GuidPartitionTable(int sectorSize,
             GptStruct gpt,
             IEnumerable<GptPartitionStruct> partitions)
         {
+            SectorSize = sectorSize;
             _gpt = gpt;
 
-            _partitions = new ReadOnlyCollection<PartitionEntry>(partitions
-                .Select(p => new PartitionEntry(p))
-                .ToList());
+            _partitions = new ReadOnlyCollection<PartitionEntry>([.. partitions.Select(p => new PartitionEntry(p))]);
         }
     }
 }

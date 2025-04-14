@@ -73,7 +73,7 @@ namespace DiskPartitionInfo.FluentApi
                     var partitions = ReadPartitions(stream, gpt);
 
                     // 成功读取到有效的GPT
-                    return new GuidPartitionTable(gpt, partitions);
+                    return new GuidPartitionTable(sectorSize, gpt, partitions);
                 }
                 catch (Exception ex)
                 {

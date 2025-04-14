@@ -25,7 +25,6 @@ namespace GPTCRC32Fixer
                     return;
                 }
 
-                // 默认尝试修复主分区表和备份分区表
                 bool fixPrimary = true;
                 bool fixBackup = true;
 
@@ -79,7 +78,7 @@ namespace GPTCRC32Fixer
             Console.WriteLine("  -b, --backup    只修复备份分区表");
             Console.WriteLine("  -h, --help      显示此帮助信息");
             Console.WriteLine();
-            Console.WriteLine("如果未指定选项，将先后尝试主分区表和备份分区表。");
+            Console.WriteLine("如果未指定选项，将先后尝试主分区表和备份分区表读取模式。");
         }
 
         private static void FixGptFile(string filePath, bool fixPrimary, bool fixBackup)
@@ -99,6 +98,7 @@ namespace GPTCRC32Fixer
 
                         Console.WriteLine("成功读取主分区表");
                         Console.WriteLine($"磁盘GUID: {primaryGpt.DiskGuid}");
+                        Console.WriteLine($"磁盘块大小：{primaryGpt.SectorSize}");
                         Console.WriteLine($"分区数量: {primaryGpt.Partitions.Count}");
                     }
                     catch (Exception ex)
@@ -120,6 +120,7 @@ namespace GPTCRC32Fixer
 
                         Console.WriteLine("成功读取备份分区表");
                         Console.WriteLine($"磁盘GUID: {backupGpt.DiskGuid}");
+                        Console.WriteLine($"磁盘块大小：{backupGpt.SectorSize}");
                         Console.WriteLine($"分区数量: {backupGpt.Partitions.Count}");
                     }
                     catch (Exception ex)
